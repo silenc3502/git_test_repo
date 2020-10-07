@@ -54,4 +54,41 @@ cat test.txt
 git checkout -  
 cat test.txt  
 
-# Second
+
+
+# Second(Remote Repository)  
+make new git repository name as git_remote_test at github.com  
+
+## How to push local data to remote  
+cd ~/proj/git_local_test  
+git remote add origin https://github.com/$(git-account)/git_remote_test.git  
+git push origin master  
+
+## How to download remote data to local  
+cd ~/proj  
+mkdir git_remote_down  
+ls  
+cd git_remote_down  
+ls  
+git clone https://github.com/$(git-account)/git_remote_test.git  
+
+ls  
+
+## push to remote
+vi developer.txt  
+
+Write anything  
+
+git add developer.txt  
+git commit -am "Add Developer List"  
+git push origin master  
+
+## pull from remote to local  
+cd ~/proj/git_local_test  
+ls -alR  
+git pull origin master  
+ls -alR  
+
+
+
+# Third  
