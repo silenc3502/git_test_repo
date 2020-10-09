@@ -179,3 +179,133 @@ git branch
 git branch mybranch  
 git branch  
 git log --oneline --all  
+
+## Change Branch  
+git checkout mybranch  
+git log --oneline --all  
+echo "Hello Git" > git_test.txt  
+cat git_test.txt  
+git status  
+git add test.txt  
+git commit -am "Add Git Test"  
+git log --oneline --all  
+
+## Check Master Branch  
+echo "Additional Test" > git_test.txt  
+cat git_test.txt  
+git status  
+git commit -am "Additional Test"  
+git log --oneline --all --graph  
+git checkout master  
+cat git_test.txt  
+
+## Merge to master  
+git merge mybranch  
+git log --oneline --all --graph  
+cat git_test.txt  
+
+## Branch Rollback  
+git log --oneline --all  
+git reset --hard HEAD~2  
+git log --oneline --all  
+
+## Rebase, Push, Remove Branch  
+git checkout mybranch  
+git rebase master  
+git log --oneline --all
+git checkout master  
+git rebase mybranch  
+git log --oneline --all  
+git push -u origin master  
+git branch -d mybranch  
+git log --oneline --all -n2  
+
+## Version Tagging  
+git log --oneline  
+git tag -am "Create Tag" v0.1  
+git log --oneline  
+git push origin v0.1  
+
+## Create New Branch  
+git checkout master  
+git checkout -b radar  
+echo "add function" >> func.txt  
+
+git add func.txt  
+git commit -am "Add Function"  
+git log --oneline --graph --all -n2  
+
+## Create Hotfix Branch, Commit, Merge to Master  
+git checkout -b hotfix master  
+git log --oneline --all -n2  
+echo "Something" >> func.txt  
+
+git add func.txt  
+git commit -am "Add Something"  
+git log --oneline --all -n1  
+git checkout master  
+git merge hotfix  
+git push  
+
+## Solve Conflict  
+git checkout radar  
+git log --oneline --all  
+git merge master  
+git status  
+
+cat func.txt  
+git add func.txt  
+git status  
+git commit  
+git log --oneline --all --graph -n4  
+
+## Rebase Project  
+git checkout radar  
+git reset --hard HEAD~  
+git log --oneline --graph --all -n3  
+git rebase master  
+git push  
+
+## Solve Conflict  
+git status  
+git add func.txt  
+git status  
+git rebase --continue  
+git log --oneline --graph --all -n2  
+git checkout master  
+git merge radar  
+
+## General Commit  
+git "master" > master.txt  
+git add master.txt  
+git commit -am "master commit 1"  
+git push origin master  
+git log --oneline -n1  
+
+## Branch Commit  
+git reset --hard HEAD~
+echo "branch" > master2.txt  
+git add master2.txt  
+git commit -am "branch commit 2"  
+git log --oneline --graph --all -n3  
+
+## Git Pull  
+git pull  
+git log --oneline --graph --all -n4  
+
+## Delete Branch with Rebase  
+git reset --hard HEAD~  
+git rebase origin/master  
+git log --oneline --all --graph -n3  
+git push  
+
+## Temporary Branch  
+git branch test radar  
+git checkout test  
+echo "anything" > any.txt  
+git add .  
+git commit -am "tmp commit"  
+git log --oneline --graph --all -n4  
+git checkout master  
+git branch -D test  
+git log --oneline --graph --all -n4  
